@@ -22,9 +22,9 @@ app.use(function(req, res, next) {
 
 initializeApp({
   credential: cert({
-    projectId: "notification-pmr",
-    privateKey: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDAov97xE7JloYd\ntIwjjhX79nICMEiFW3j5JIay4ULsQE+O+w8CwMilOQnoxOg0lLeoGyJ1qQcxACBK\nz/umMKbdshHCUjVn2KyFsd5bGUd0JF+Gunkz3cvOuMmgxGzkmhgMzQMeaIasEkRT\njWkzh7VxpRt1khEPsp77uQIE8P8nXlk+AOpAr8T9/JJPVosSEotXQHZT16DO96PC\nCWLmdZSJx85awZSeNJhxsehmAR9oujSJa9zOuz+hd4+ljfKOoVEKxBYZcSPWCw04\nyoWWLwl24j5+zn4Rv/Nah9sawQriLy/z8x8J5ljG+GDw2xHkOkVjSfbyZUpaJKBZ\nfbVLw+R9AgMBAAECggEAKMvMRfKYye34GL3mCNicNMhoNCj0DtQErmTLJwJ4OQ7U\nmn/2WZuo0n7eJ57d21bcfzxB47+of3ram+VokrVOfXhq9OeSmlvDi6vT3qCfpovW\ndDK1HOQdt7mgL80xj4dHzRw0yyGRVcsnj7dMvoZAyaDRDCjjNpsaOs6fTBsaukQN\nlMaRhVD9yIc9Ojo0IHDpD9/6VkUttmu5eHjuTX0CzwnDtFEpBrPe0SnlIf+UGyf6\nQpthM42L3Ra4cO1H5Krcdf1KJ8sW3AjuSNGfYckB8NCUqEvqxl3ldOi6VPUtg49J\nSKrom5CjWYEb5BniXCooBtY4YdSmezpceHgzLMDxCQKBgQDjuepRLpRc1zBSqwke\nxOWBb1eslKOhR2Cl0reyzgZW2MTNEB1mVTd6m1VtnUu3lOb/dTvNFPYpFB5zvVx1\nKjgnekzWRIcUhAjI2SSyWX3YWrHDP/rh8K6MWXua65EQmVMQ5pUNZd+uO6RXrGRj\nPiyTRHzEy/KBl2rt7JpJ6omvCQKBgQDYjcrGbboNqAkZD321qboFfzdFerCK2cII\n7c3Hh/NcN3kVjTrEXR+GZB1m9AW3iEYJeBwgSlORBeuRxD2E5nStw/ybcN18pR7R\nf9l3haJYHpnDzg7ugMZfRlK4IKAEOy/MjKpRukjNNWiV7HHN5dlh/wj4sZYMrmbw\n0pb//rmy1QKBgAuSLMfHOB6niHsK2cHIe2jiQXAxdUcCm3SRimf5c/UBuq44vWWv\nusvuDJ8vOOOxGzOrv0giYoef0BRNcN87L/NBkZnpjXuLYe7iqayuQ2i04wdqvtKw\nKg5TlaY/hfVz9PaM4NH3dTAjM6yIw+kPBbDN8BEH0+Cl0vcX6JcM5cYRAoGBAMvg\nEjvmKfeZb5dMYkmZVSy/rEWZUIQopujJGab0c0UqZLDJmb4s/fUEZDn9GzTC800O\n60vrLemm7TT60ABDBy5hCX0+MQecXPtXpmFESqcziAg0AxK/4gLorg/zhzL0lfe5\nps/y1X98/M3JIQt7jcEY3lVku6OMvhWT7d1s719RAoGBAKzDuUeOMRzxn5V6SrYu\nevj+IxIcgz2UhT8lwOJ26JiZMDk1Xwspvcm/3GY2u5Y/27YnZASIZv/Om9mvajrt\nqdsP9RZ/17Xxc5R6AkUkSCjeKwVtK/+kHv3aNRkf9qryuIvngs+z1c7DFgNUT4yX\niY5X6W25Ga9L5iupeqkMBlev\n-----END PRIVATE KEY-----\n",
-    clientEmail: "firebase-adminsdk-k84di@notification-pmr.iam.gserviceaccount.com",
+    projectId: process.env.PROJECT_ID,
+    privateKey: process.env.PRIVATE_KEY,
+    clientEmail: process.env.CLIENT_EMAIL,
   }),
 })
 
