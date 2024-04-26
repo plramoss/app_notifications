@@ -29,8 +29,7 @@ initializeApp({
 })
 
 app.post("/send", function(req, res) {
-  const authHeader = req.headers.authorization;
-  const receivedToken = authHeader && authHeader.split(' ')[1];
+  const labTopic = req.body.topic
 
     const message = {
     notification: {
@@ -39,8 +38,8 @@ app.post("/send", function(req, res) {
       // image: '', // URL da imagem a ser exibida na notificação
     },
     data: { // Dados adicionais a serem enviados junto com a notificação
-      key1: req.body.value1,
-      key2: req.body.value2,
+      key1: req.body?.value1,
+      key2: req.body?.value2,
     },
     android: { // Configurações específicas para Android
       ttl: 3600 * 1000, // Tempo de vida da mensagem em milissegundos
@@ -55,7 +54,7 @@ app.post("/send", function(req, res) {
         'apns-priority': '10', // Prioridade da mensagem
       },
     },
-    token: receivedToken,
+    topic: labTopic,
   };
 
   getMessaging()
@@ -63,7 +62,7 @@ app.post("/send", function(req, res) {
     .then((response) => {
       res.status(200).json({
         message: "Mensagem Enviada",
-        token: receivedToken,
+        topic: labTopic,
       });
       console.log("Menssagem Enviada:", response);
     })
