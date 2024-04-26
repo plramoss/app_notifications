@@ -1,3 +1,7 @@
 # app_notifications
-### endpoint test
-<https://app-notifications-mi6y.onrender.com>
+### Test URL
+<https://app-notifications-mi6y.onrender.com/send>
+
+### Post 
+* Auth: Bearer `fcmToken`
+* Body: JSON {title: string, body: string, param?: string }
