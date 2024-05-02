@@ -29,47 +29,42 @@ initializeApp({
 })
 
 app.post("/send", function(req, res) {
-  const labTopic = req.body.topic
-
-    const message = {
+  const tokens = req.body.tokens;
+  const invalidTokens = []
+  
+  const message = {
     notification: {
       title: req.body.title,
       body: req.body.text,
-      // image: '', // URL da imagem a ser exibida na notificação
-    },
-    data: { // Dados adicionais a serem enviados junto com a notificação
-      key1: req.body?.value1,
-      key2: req.body?.value2,
     },
     android: { // Configurações específicas para Android
       ttl: 3600 * 1000, // Tempo de vida da mensagem em milissegundos
       priority: 'normal', // Prioridade da mensagem ('normal' ou 'high')
       notification: {
-        icon: '', // URL do ícone a ser exibido na notificação
-        color: '#f45342', // Cor do ícone da notificação
+        color: '#248A3F', // Cor do ícone da notificação
+        icon: './controllab_icon.png'
       },
     },
-    apns: { // Configurações específicas para iOS
+    apns: { // Configurações específicas para iOSsar
       headers: {
         'apns-priority': '10', // Prioridade da mensagem
       },
     },
-    topic: labTopic,
+    tokens: tokens,
   };
 
-  getMessaging()
-    .send(message)
-    .then((response) => {
-      res.status(200).json({
-        message: "Mensagem Enviada",
-        topic: labTopic,
+  getMessaging().sendEachForMulticast(message)
+    .then((r) => {
+      tokens.forEach((token, i) => {
+        const resSuccess = r.responses[i].success;
+        if(resSuccess === false){
+          invalidTokens.push(token)
+        }
       });
-      console.log("Menssagem Enviada:", response);
-    })
-    .catch((error) => {
-      res.status(400);
-      res.send(error);
-      console.log("Erro no envio da mensagem:", error)
+      res.json({ invalidTokens: invalidTokens });
+    }).catch((error) => {
+      console.log("Erro ao enviar a mensagem: ", error)
+      res.status(500).send('Erro ao enviar a mensagem')
     })
 });
 
