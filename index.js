@@ -33,6 +33,9 @@ app.post("/send", function(req, res) {
   const invalidTokens = []
   
   const message = {
+    data: {
+      labId: req.body.labId
+    },
     notification: {
       title: req.body.title,
       body: req.body.text,
@@ -41,7 +44,7 @@ app.post("/send", function(req, res) {
       ttl: 3600 * 1000, // Tempo de vida da mensagem em milissegundos
       priority: 'normal', // Prioridade da mensagem ('normal' ou 'high')
       notification: {
-        color: '#248A3F', // Cor do ícone da notificação
+        color: '#FFFFFF', // Cor transparente da notificação
         icon: './controllab_icon.png'
       },
     },
